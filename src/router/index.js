@@ -1,15 +1,27 @@
-import { createRouter, createWebHistory } from '@ionic/vue-router';
-import HomePage from '../views/HomePage.vue'
+import { createRouter, createWebHistory } from 'vue-router';
+import FlowerPage from '../pages/FlowerPage.vue';
+import FlowerList from '../pages/FlowerList.vue';
+import LogIn from '../pages/LogIn.vue';
 
 const routes = [
   {
     path: '/',
-    redirect: '/home'
+    redirect: '/flower-list',
   },
   {
-    path: '/home',
-    name: 'Home',
-    component: HomePage
+    path: '/flower-page/:id',
+    name: 'FlowerPage',
+    component: FlowerPage
+  },
+  {
+    path: '/flower-list',
+    name: 'FlowerList',
+    component: FlowerList
+  },
+  {
+    path: '/login',
+    name: 'LogIn',
+    component: LogIn
   }
 ]
 
