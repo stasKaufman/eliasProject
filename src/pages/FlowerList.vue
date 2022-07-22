@@ -26,7 +26,8 @@ export default ({
     }
   },
   mounted () {
-    this.$store.dispatch('loadFlowers');
+    this.flowerList()
+    // this.$store.dispatch('loadFlowers');
   },
   computed: {
     filteredFlowerList () {
@@ -44,12 +45,19 @@ export default ({
       }
 
       return finalResult
-    },
-    flowerList () {
-      return this.$store.getters.flowerList;
     }
   },
   methods: {
+    async flowerList () {
+      try {
+        const flowerList = await this.$http.get('/flowers');
+        return flowerList
+      } catch (error) {
+        console.error(error)
+      }
+
+      // return this.$store.getters.flowerList;
+    },
     todologin () {
        this.$router.push({ name: 'LogIn'})
     },

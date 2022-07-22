@@ -1,4 +1,6 @@
 import { createApp } from 'vue'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
 import App from './App.vue'
 import router from './router';
 import store from './store/store'
@@ -25,9 +27,12 @@ import '@ionic/vue/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
+axios.defaults.baseURL = 'http://localhost:3000';
+
 const app = createApp(App)
   .use(IonicVue)
   .use(router)
+  .use(VueAxios, axios)
   .use(store);
 
 app.component('BaseLayout', BaseLayout);
